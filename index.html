@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILLY FX PRO</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ─── HEADER ───────────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="brand-wrapper">
+      <div class="brand-title">
+        MILLY FX <span class="badge">PRO</span>
+      </div>
+      <div class="brand-sub">EDITMAXXING TOOLKIT</div>
+    </div>
+    <div class="header-status" id="headerStatus" title="Status of connection to After Effects">
+      <span class="pulse-dot"></span>
+      <span id="statusText">ONLINE</span>
+    </div>
+  </header>
+
+  <!-- ─── PRESET SELECTOR BAR ──────────────────────────────────────────────── -->
+  <div class="preset-bar">
+    <div class="preset-select-wrapper">
+      <select id="presetSelect" class="preset-select">
+        <option value="" disabled selected>SELECT PRESET...</option>
+        <option value="opium_minimalist">OPIUM MINIMALIST</option>
+        <option value="chaos_maxxing">CHAOS MAXXING</option>
+        <option value="sony_trinitron">90S SONY TRINITRON</option>
+        <option value="acid_thermal">ACID THERMAL</option>
+        <option value="paper_stopmotion">PAPER STOP-MOTION</option>
+        <option value="clean_street">CLEAN STREET EDIT</option>
+        <option value="flir_heatmap">FLIR HEAT MAP (JASH9N)</option>
+        <!-- Custom user presets will be dynamically injected here -->
+      </select>
+      <span class="preset-chevron">▼</span>
+    </div>
+
+    <button id="btnSavePreset" class="btn-icon" title="Save current stack as preset">
+      <span>💾</span> SAVE
+    </button>
+  </div>
+
+  <!-- ─── DYNAMIC 6-SLOT EFFECT STACK ──────────────────────────────────────── -->
+  <main class="slots-container" id="slotsContainer">
+    <!-- Generated dynamically via app.js -->
+  </main>
+
+  <button id="btnAddSlot" class="btn-add-slot" style="display: none;">
+    + ADD EFFECT SLOT
+  </button>
+
+  <!-- ─── BOTTOM CONTROLS ──────────────────────────────────────────────────── -->
+  <footer class="bottom-bar">
+    <button id="btnClear" class="btn-clear" title="Clear all active effect slots">
+      ✕
+    </button>
+    <button id="btnShuffle" class="btn-shuffle" title="Shuffle unlocked slots into a random high-fashion look">
+      <span>🎲</span> SHUFFLE
+    </button>
+    <button id="btnApply" class="btn-apply" title="Apply effect stack to selected layer in After Effects">
+      ✓
+    </button>
+  </footer>
+
+  <!-- ─── STATUS FOOTER ────────────────────────────────────────────────────── -->
+  <div class="footer-info">
+    <span>TARGET:</span>
+    <span class="target-layer" id="targetLayerInfo">Detecting layer...</span>
+    <span id="fxCountInfo">6 FX ACTIVE</span>
+  </div>
+
+  <!-- ─── MODAL: SAVE PRESET ───────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="saveModal">
+    <div class="modal-box">
+      <div class="modal-title">SAVE CUSTOM LOOK</div>
+      <input type="text" id="presetNameInput" class="modal-input" placeholder="e.g. CARTI_FEEL_01" autofocus />
+      <div class="modal-actions">
+        <button id="btnCancelModal" class="modal-btn">CANCEL</button>
+        <button id="btnConfirmSave" class="modal-btn primary">SAVE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/CSInterface.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
