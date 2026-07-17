@@ -1,0 +1,526 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   MILLY FX PRO — Modern Dark Graphite & Acid Lime UI
+   Tailored for Kirill Tsyganov (millyrock) | Opium / Editmaxxing Aesthetic
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg-primary: #0F0F12;
+  --bg-card: #17171B;
+  --bg-slot: #1E1E24;
+  --bg-slot-hover: #26262E;
+  --border-subtle: #2A2A33;
+  --border-focus: #39FF14;
+  --accent-lime: #39FF14;
+  --accent-lime-dim: rgba(57, 255, 20, 0.15);
+  --accent-lime-hover: #45FF22;
+  --accent-lock: #FFB300;
+  --text-main: #F2F2F4;
+  --text-muted: #8E8E98;
+  --text-dim: #5C5C66;
+  --danger: #FF3344;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Inter, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 10px;
+}
+
+.brand-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--text-main);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-title .badge {
+  background: var(--accent-lime);
+  color: #000;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  margin-top: 1px;
+}
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent-lime);
+  background: var(--accent-lime-dim);
+  padding: 3px 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-lime);
+  display: inline-block;
+}
+
+/* ─── PRESET BAR ─────────────────────────────────────────────────────────── */
+.preset-bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.preset-select-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.preset-select {
+  width: 100%;
+  height: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 0 20px 0 8px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.preset-select:focus {
+  border-color: var(--accent-lime);
+}
+
+.preset-chevron {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.btn-icon {
+  height: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 0 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.btn-icon:hover {
+  color: var(--text-main);
+  border-color: var(--text-muted);
+  background: var(--bg-slot);
+}
+
+/* ─── STACK SLOTS CONTAINER ──────────────────────────────────────────────── */
+.slots-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.slot-card {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  padding: 6px 8px;
+  gap: 8px;
+  transition: transform 0.12s ease, border-color 0.15s ease;
+  position: relative;
+}
+
+.slot-card:hover {
+  border-color: #383842;
+}
+
+.slot-card.locked {
+  border-color: rgba(255, 179, 0, 0.4);
+}
+
+.slot-card.bypassed {
+  opacity: 0.45;
+}
+
+.slot-card.shuffling {
+  animation: slotFlash 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes slotFlash {
+  0% { border-color: var(--accent-lime); transform: scale(0.99); }
+  50% { background: #22222B; }
+  100% { border-color: var(--border-subtle); transform: scale(1); }
+}
+
+/* Bypass Toggle Dot */
+.slot-toggle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-subtle);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.slot-toggle.active {
+  background: var(--accent-lime);
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.4);
+}
+
+/* Slot Content (Dropdown / Picker) */
+.slot-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slot-index {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-dim);
+  width: 12px;
+}
+
+.slot-dropdown {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slot-dropdown option {
+  background: #18181D;
+  color: #FFF;
+  font-family: var(--font-mono);
+}
+
+/* Slot Controls (Lock & Remove) */
+.slot-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.btn-slot-lock, .btn-slot-del {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transition: all 0.15s ease;
+}
+
+.btn-slot-lock:hover {
+  color: var(--accent-lock);
+  background: rgba(255, 179, 0, 0.1);
+}
+
+.btn-slot-lock.is-locked {
+  color: var(--accent-lock);
+  background: rgba(255, 179, 0, 0.18);
+  border: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+.btn-slot-del:hover {
+  color: var(--danger);
+  background: rgba(255, 51, 68, 0.1);
+}
+
+/* Add Slot Placeholder */
+.btn-add-slot {
+  width: 100%;
+  height: 32px;
+  border: 1px dashed var(--border-subtle);
+  background: transparent;
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-add-slot:hover {
+  border-color: var(--text-muted);
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ─── BOTTOM CONTROLS ────────────────────────────────────────────────────── */
+.bottom-bar {
+  display: flex;
+  gap: 6px;
+  align-items: stretch;
+  margin-top: auto;
+}
+
+.btn-clear {
+  width: 38px;
+  height: 38px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-clear:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: rgba(255, 51, 68, 0.08);
+}
+
+.btn-shuffle {
+  flex: 1;
+  height: 38px;
+  background: #1C1C22;
+  border: 1.5px solid var(--accent-lime);
+  border-radius: 5px;
+  color: var(--accent-lime);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+}
+
+.btn-shuffle:hover {
+  background: var(--accent-lime);
+  color: #000;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.35);
+}
+
+.btn-shuffle:active {
+  transform: scale(0.98);
+}
+
+.btn-apply {
+  width: 48px;
+  height: 38px;
+  background: var(--accent-lime);
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-apply:hover {
+  background: var(--accent-lime-hover);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+.btn-apply:active {
+  transform: scale(0.98);
+}
+
+/* ─── TOAST / FOOTER INFO ────────────────────────────────────────────────── */
+.footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  color: var(--text-dim);
+}
+
+.footer-info .target-layer {
+  color: var(--text-muted);
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Modal for Preset Save */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.75);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 15px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 14px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.modal-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.modal-input {
+  width: 100%;
+  height: 28px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 0 8px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.modal-input:focus {
+  border-color: var(--accent-lime);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.modal-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-slot);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.modal-btn.primary {
+  background: var(--accent-lime);
+  border-color: var(--accent-lime);
+  color: #000;
+  font-weight: 700;
+}
